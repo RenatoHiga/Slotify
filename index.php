@@ -20,99 +20,111 @@
     </header>
 
     <body>
+        
+        <div id="mainContainer">
 
-        <div id="nowPlayingBarContainer">
+            <div id="topContainer">
+                
+                <div id="navbarContainer">
+
+                </div>
             
-            <div id="nowPlayingBar">
+            </div>
 
-                <div id="nowPlayingLeft">
-                    <div class="content">
-                        <span class="albumLink">
-                            <img src="https://2.bp.blogspot.com/-LXZbBfnP-Po/Tt35Leob0yI/AAAAAAAAAB4/uP3yuE-xdzg/s1600/square_smaller_orange3.png" alt="" srcset="" class="albumArtwork">
-                        </span>
+            <div id="nowPlayingBarContainer">
+                
+                <div id="nowPlayingBar">
 
-                        <div class="trackInfo">
-
-                            <span class="trackName">
-                                <span>Happy Birthday</span>
+                    <div id="nowPlayingLeft">
+                        <div class="content">
+                            <span class="albumLink">
+                                <img src="https://2.bp.blogspot.com/-LXZbBfnP-Po/Tt35Leob0yI/AAAAAAAAAB4/uP3yuE-xdzg/s1600/square_smaller_orange3.png" alt="" srcset="" class="albumArtwork">
                             </span>
 
-                            <span class="artistName">
-                                <span>Reece Kenney</span>
-                            </span>
+                            <div class="trackInfo">
 
+                                <span class="trackName">
+                                    <span>Happy Birthday</span>
+                                </span>
+
+                                <span class="artistName">
+                                    <span>Reece Kenney</span>
+                                </span>
+
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="nowPlayingCenter">
-                    
-                    <div class="content playerControls">
-                    
-                        <div class="buttons">
+                    <div id="nowPlayingCenter">
+                        
+                        <div class="content playerControls">
+                        
+                            <div class="buttons">
 
-                            <button class="controlButton shuffle" title="Shuffle Button">
-                                <img src="assets/images/icons/shuffle.png" alt="shuffle">
-                            </button>
+                                <button class="controlButton shuffle" title="Shuffle Button">
+                                    <img src="assets/images/icons/shuffle.png" alt="shuffle">
+                                </button>
 
-                            <button class="controlButton previous" title="Previous Button">
-                                <img src="assets/images/icons/previous.png" alt="previous">
-                            </button>
+                                <button class="controlButton previous" title="Previous Button">
+                                    <img src="assets/images/icons/previous.png" alt="previous">
+                                </button>
 
-                            <button class="controlButton play" title="Play Button">
-                                <img src="assets/images/icons/play.png" alt="play">
-                            </button>
+                                <button class="controlButton play" title="Play Button">
+                                    <img src="assets/images/icons/play.png" alt="play">
+                                </button>
 
-                            <button class="controlButton pause" title="Pause Button" style="display:none;">
-                                <img src="assets/images/icons/pause.png" alt="pause">
-                            </button>
+                                <button class="controlButton pause" title="Pause Button" style="display:none;">
+                                    <img src="assets/images/icons/pause.png" alt="pause">
+                                </button>
 
-                            <button class="controlButton next" title="Next Button">
-                                <img src="assets/images/icons/next.png" alt="Next">
-                            </button>
+                                <button class="controlButton next" title="Next Button">
+                                    <img src="assets/images/icons/next.png" alt="Next">
+                                </button>
 
-                            <button class="controlButton repeat" title="Repeat Button">
-                                <img src="assets/images/icons/repeat.png" alt="repeat">
-                            </button>
+                                <button class="controlButton repeat" title="Repeat Button">
+                                    <img src="assets/images/icons/repeat.png" alt="repeat">
+                                </button>
+
+                            </div>
+
+                            <div class="playbackBar">
+
+                                <span class="progressTime current">0.00</span>
+
+                                <div class="progressBar">
+                                    <div class="progressBarBg">
+                                        <div class="progress"></div>    
+                                    </div>
+                                </div>
+                                
+                                <span class="progressTime remaining">0.00</span>
+
+                            </div>
 
                         </div>
+                    
+                    </div>
 
-                        <div class="playbackBar">
+                    <div id="nowPlayingRight">
+                        <div class="volumeBar">
 
-                            <span class="progressTime current">0.00</span>
+                            <button class="controlButton volume" title="Volume button">
+                                <img src="assets/images/icons/volume.png" alt="volume">
+                            </button>
 
                             <div class="progressBar">
                                 <div class="progressBarBg">
-                                    <div class="progress"></div>    
+                                    <div class="progress"></div>
                                 </div>
                             </div>
-                            
-                            <span class="progressTime remaining">0.00</span>
 
                         </div>
-
                     </div>
-                
+
                 </div>
-
-                <div id="nowPlayingRight">
-                    <div class="volumeBar">
-
-                        <button class="controlButton volume" title="Volume button">
-                            <img src="assets/images/icons/volume.png" alt="volume">
-                        </button>
-
-                        <div class="progressBar">
-                            <div class="progressBarBg">
-                                <div class="progress"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+            
             </div>
-        
+
         </div>
 
     </body>
