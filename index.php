@@ -37,13 +37,9 @@
 
                             <div class="navItem">
 
-<<<<<<< HEAD
-                                <a href="search.php" class="navItemLink">Search</a>
-=======
                                 <a href="search.php" class="navItemLink">Search
                                     <img src="assets/images/icons/search.png" alt="search" class="icon">
                                 </a>
->>>>>>> 635e7576412e7d50de59c5ec36d52f83dd0e8b5d
 
                             </div>
 
