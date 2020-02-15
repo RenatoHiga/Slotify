@@ -10,6 +10,12 @@ html, body {
     color: #fff;
 }
 
+body {
+    background-color: #181818;
+    font-size: 14px;
+    min-width: 720px;
+}
+
 #nowPlayingBarContainer {    
     width: 100%;
     background-color:#282828;
@@ -168,6 +174,7 @@ html, body {
 
 .logo img {
     width: 32px;
+    margin-bottom: 10px;
 }
 
 .navBar .group {
@@ -181,4 +188,19 @@ html, body {
     font-weight: 700;
     display: block;
     letter-spacing: 1px;
+}
+
+.navItemLink .icon {
+    width: 25px;
+    float: right;
+}
+
+#mainViewContainer {
+    margin-left: 220px;
+    padding-bottom: 90px;
+    width: calc(100% - 220px);
+}
+
+#mainContent {
+    padding: 0 20px;
 }
