@@ -15,7 +15,34 @@
         currentPlaylist = <?php echo $jsonArray ?>;
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
+
+        $(".playbackBar .progressBar").mousedown(function() {
+            mouseDown = true;
+        });
+
+        $(".playbackBar .progressBar").mousemove(function(event) {
+            if (mouseDown == true) {
+                timeFromOffset(event, this);
+            }
+            
+        });
+
+        $(".playbackBar .progressBar").mouseup(function(event) {
+            timeFromOffset(event, this);
+        });
+
+        $(document).mouseup(function() {
+            mouseDown = false;
+        });
+
     });
+
+    function timeFromOffset(mouse, progressBar) {
+        var percentage = mouse.offsetX / progressBar.clientWidth * 100;
+        var seconds = audioElement.audio.duration * (percentage / 100);
+        console.log(percentage);
+        audioElement.setTime(seconds);
+    }
 
     function setTrack(trackId, newPlaylist, play) {
 
