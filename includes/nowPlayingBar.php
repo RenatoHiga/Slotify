@@ -158,9 +158,9 @@
                 var album = JSON.parse(data);
                 $(".albumLink img").attr("src", album.artworkPath);
             });
-            
+
             audioElement.setTrack(track);
-            playSong();
+            
         });
 
         if (play) {
