@@ -12,9 +12,9 @@
 <script>
     
     $(document).ready(function() {
-        currentPlaylist = <?php echo $jsonArray ?>;
+        var newPlaylist = <?php echo $jsonArray ?>;
         audioElement = new Audio();
-        setTrack(currentPlaylist[0], currentPlaylist, false);
+        setTrack(newPlaylist[0], newPlaylist, false);
         updateVolumeProgressBar(audioElement.audio);
 
         $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(event) {
@@ -91,7 +91,7 @@
             currentIndex = currentIndex + 1;
         }
 
-        var trackToPlay = currentPlaylist[currentIndex];
+        var trackToPlay = shuffle ? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
         setTrack(trackToPlay, currentPlaylist, true);
     }
 
@@ -111,11 +111,38 @@
         shuffle = !shuffle;
         var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
         $(".controlButton.shuffle img").attr("src", "assets/images/icons/" + imageName);
+
+        if (shuffle == true) {
+            shuffleArray(shufflePlaylist);
+            currentIndex = shufflePlaylist.indexOf(audioElement.currentPlaying.id);
+        } else {
+            currentIndex = currentPlaylist.indexOf(audioElement.currentPlaying.id);
+        }
+    }
+
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
 
     function setTrack(trackId, newPlaylist, play) {
 
-        currentIndex = currentPlaylist.indexOf(trackId);
+        if (newPlaylist != currentPlaylist) {
+            currentPlaylist = newPlaylist;
+            shufflePlaylist = currentPlaylist.slice();
+            shuffleArray(shufflePlaylist);
+        }
+
+        if (shuffle == true) {
+            currentIndex = shufflePlaylist.indexOf(trackId);
+        } else {
+            currentIndex = currentPlaylist.indexOf(trackId);
+        }
+        
         pauseSong();
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) {
@@ -131,7 +158,7 @@
                 var album = JSON.parse(data);
                 $(".albumLink img").attr("src", album.artworkPath);
             });
-
+            
             audioElement.setTrack(track);
             playSong();
         });
