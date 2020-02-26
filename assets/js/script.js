@@ -14,7 +14,7 @@ function openPage(url) {
     if (url.indexOf("?") == -1) {
         url = url + "?";
     }
-    var encodeUrl = encodeURI(url + "userLoggedIn=" + userLoggedIn);
+    var encodeUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
     console.log(encodeUrl);
     $("#mainContent").load(encodeUrl);
     $("body").scrollTop(0);
@@ -42,6 +42,10 @@ function updateTimeProgressBar(audio) {
 function updateVolumeProgressBar(audio) {
     var volume = audio.volume * 100;
     $(".volumeBar .progress").css("width", volume + "%");
+}
+
+function playFirstSong() {
+    setTrack(tempPlaylist[0], tempPlaylist, true);
 }
 
 function Audio() {
