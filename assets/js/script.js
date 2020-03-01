@@ -23,6 +23,25 @@ $(window).scroll(function() {
     hideMenuOptionsMenu();
 });
 
+$(document).on("change", "select.playlist", function() {
+    var select = $(this);
+    var playlistId = select.val();
+    var songId = select.prev(".songId").val();
+
+    $.post("includes/handlers/ajax/addToPlaylist.php", {playlistId: playlistId, songId: songId})
+    .done(function(error) {
+
+        if (error != "") {
+            alert(error);
+            return;
+        }
+
+        hideMenuOptionsMenu();
+        select.val("");
+    });
+
+});
+
 function openPage(url) {
 
     if (timer != null) {
@@ -33,10 +52,30 @@ function openPage(url) {
         url = url + "?";
     }
     var encodeUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
-    console.log(encodeUrl);
+    
     $("#mainContent").load(encodeUrl);
     $("body").scrollTop(0);
     history.pushState(null, null, url);
+}
+
+
+function removeFromPlaylist(button, playlistId) {
+
+    var songId = $(button).prevAll(".songId").val();
+
+    $.post("includes/handlers/ajax/removeFromPlaylist.php", {playlistId: playlistId, songId: songId})
+    .done(function(error) {
+        console.log("Aqui");
+        if (error != "") {
+            alert(error);
+            return;
+        }
+
+        //Do something when AJAX returns
+        openPage("playlist.php?id="+playlistId);
+    });
+
+
 }
 
 function createPlaylist() {
@@ -87,8 +126,10 @@ function hideMenuOptionsMenu() {
 
 function showOptionsMenu(button) {
 
+    var songId = $(button).prevAll(".songId").val();
     var menu = $(".optionsMenu");
     var menuWidth = menu.width();
+    menu.find(".songId").val(songId);
 
     var scrollTop = $(window).scrollTop(); //Distance from top of window to top of document
     var elementOffset = $(button).offset().top; //Distance from top of document
