@@ -9,6 +9,19 @@ var shuffle = false;
 var userLoggedIn;
 var timer;
 
+$(document).click(function(click) {
+
+    var target = $(click.target);
+
+    if (!target.hasClass("item") && !target.hasClass("optionsButton")) {
+        hideMenuOptionsMenu();
+    }
+
+});
+
+$(window).scroll(function() {
+    hideMenuOptionsMenu();
+});
 
 function openPage(url) {
 
@@ -45,6 +58,45 @@ function createPlaylist() {
         });
 
     }
+
+}
+
+function deletePlaylistId(playlistId) {
+    var prompt = confirm("Are you sure want to delete this playlist?");
+
+    if (prompt == true) {
+        $.post("includes/handlers/ajax/deletePlaylist.php", {playlistId: playlistId}).done(function(error) {
+            
+            if (error != "") {
+                alert(error);
+                return;
+            }
+
+            //Do something when AJAX returns
+            openPage("yourMusic.php");
+        });
+    }
+}
+
+function hideMenuOptionsMenu() {
+    var menu = $(".optionsMenu");
+    if (menu.css.display != "none") {
+        menu.css("display", "none");
+    }
+}
+
+function showOptionsMenu(button) {
+
+    var menu = $(".optionsMenu");
+    var menuWidth = menu.width();
+
+    var scrollTop = $(window).scrollTop(); //Distance from top of window to top of document
+    var elementOffset = $(button).offset().top; //Distance from top of document
+
+    var top = elementOffset - scrollTop;
+    var left = $(button).position().left;
+
+    menu.css({"top": top + "px", "left": left - menuWidth + "px", "display": "inline"});
 
 }
 
